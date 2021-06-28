@@ -22,3 +22,6 @@ spring:
 
   liquibase:
     change-log: classpath:/liquibase/master_change_log.xml
+logging:
+  file:
+    path: ./logs
