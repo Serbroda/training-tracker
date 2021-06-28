@@ -7,6 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -22,5 +24,10 @@ public class UserServiceImpl implements UserService {
     public User getUserByUsername(String username) {
         LOG.info("Getting user {}", username);
         return userRepository.findByUsernameIgnoreCase(username);
+    }
+
+    @Override
+    public List<User> getAll() {
+        return userRepository.findAll();
     }
 }

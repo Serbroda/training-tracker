@@ -1,7 +1,10 @@
 package de.rottstegge.trainingtracker.controller.v1;
 
+import de.rottstegge.trainingtracker.mapper.UserMapper;
 import de.rottstegge.trainingtracker.model.User;
 import de.rottstegge.trainingtracker.service.UserService;
+import de.rottstegge.trainingtracker.v1.model.UserDto;
+import de.rottstegge.trainingtracker.v1.server.UsersApi;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,10 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 
 @RequestMapping("/api/v1")
 @RestController
-public class UserController {
+public class UserController implements UsersApi {
 
     private final UserService userService;
 
@@ -20,12 +24,17 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/users/{username}")
-    public ResponseEntity<User> getUserByUsername(@PathVariable("username") String username) {
+    @Override
+    public ResponseEntity<UserDto> getUserByUsername(@PathVariable("username") String username) throws Exception {
         User user = userService.getUserByUsername(username);
         if(user == null) {
             throw new EntityNotFoundException("User with username '" + username + "' not found");
         }
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(UserMapper.INSTANCE.map(user));
+    }
+
+    @Override
+    public ResponseEntity<List<UserDto>> getUsers() throws Exception {
+        return ResponseEntity.ok(UserMapper.INSTANCE.mapAll(userService.getAll()));
     }
 }
