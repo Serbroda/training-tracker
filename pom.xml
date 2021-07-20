@@ -20,9 +20,11 @@
 	</properties>
 
 	<modules>
+		<module>training-tracker-sdk-server</module>
+		<module>training-tracker-sdk-angular</module>
+		<module>training-tracker-client</module>
 		<module>training-tracker-webapp</module>
-        <module>training-tracker-sdk-server</module>
-    </modules>
+	</modules>
 
 	<dependencyManagement>
 		<dependencies>
