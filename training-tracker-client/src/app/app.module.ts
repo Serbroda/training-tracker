@@ -8,9 +8,11 @@ import { BASE_PATH } from 'training-tracker-sdk-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 @NgModule({
-    declarations: [AppComponent, SidenavComponent],
+    declarations: [AppComponent, SidenavComponent, DashboardComponent, SettingsComponent],
     imports: [HttpClientModule, BrowserModule, AppRoutingModule],
     providers: [{ provide: BASE_PATH, useValue: environment.apiBaseUrl }],
     bootstrap: [AppComponent],
