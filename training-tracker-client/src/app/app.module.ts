@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import {BASE_PATH} from 'training-tracker-sdk-angular';
+import {HttpClientModule} from '@angular/common/http';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -12,6 +13,7 @@ import { environment } from '../environments/environment';
     AppComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule
   ],
