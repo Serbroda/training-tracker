@@ -11,9 +11,10 @@ import { environment } from '../environments/environment';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { RunChartComponent } from './components/charts/run-chart/run-chart.component';
 
 @NgModule({
-    declarations: [AppComponent, SidenavComponent, DashboardComponent, SettingsComponent],
+    declarations: [AppComponent, SidenavComponent, DashboardComponent, SettingsComponent, RunChartComponent],
     imports: [HttpClientModule, BrowserModule, AppRoutingModule, FontAwesomeModule],
     providers: [{ provide: BASE_PATH, useValue: environment.apiBaseUrl }],
     bootstrap: [AppComponent],
